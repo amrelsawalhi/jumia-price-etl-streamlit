@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from scraper import scrape_jumia  # your existing scraping function
+from Scraper import scrape_jumia  # your existing scraping function
 
 st.title("Jumia Egypt Product Scraper")
 
