@@ -31,3 +31,6 @@ if st.button("Scrape All"):
         st.download_button("📥 Download CSV", csv, file_name="jumia_prices.csv", mime="text/csv")
     else:
         st.warning("❌ No data scraped. Try different keywords.")
+
+df = scrape_jumia("headphones", max_results=5)
+st.write(df)
