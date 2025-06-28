@@ -27,7 +27,7 @@ A web scraper that extracts product information from Jumia Egypt and displays it
 
 1. Run the application:  
     ```bash
-    streamlit run jumia_scraper.py
+    streamlit run App.py
 2. Enter one or more product names (one per line)
 3. Adjust the "Max products per search" slider
 4. Click "Scrape Now" to start scraping
