@@ -14,13 +14,20 @@ A web scraper that extracts product information from Jumia Egypt and displays it
 
 ## Installation
 
-1. Clone this repository
-2. Install the required packages: pip install -r requirements.txt
+1. Clone this repository:
+    ```bash
+   git clone https://github.com/amrelsawalhi/jumia-price-etl-streamlit.git
+   cd jumia-price-etl-streamlit
+2. Install the required packages: 
+    ```bash
+    pip install -r requirements.txt
 
 
 ## Usage
 
-1. Run the application:  streamlit run jumia_scraper.py
+1. Run the application:  
+    ```bash
+    streamlit run jumia_scraper.py
 2. Enter one or more product names (one per line)
 3. Adjust the "Max products per search" slider
 4. Click "Scrape Now" to start scraping
