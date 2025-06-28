@@ -7,6 +7,7 @@ import random
 
 # Global tracker for throttling repeat queries
 recent_queries = {}
+ua = UserAgent()
 
 def scrape_jumia(product_name, max_results=10):
     product_name = product_name.strip().lower()
@@ -26,7 +27,7 @@ def scrape_jumia(product_name, max_results=10):
 
     # Rotate user-agent
     headers = {
-        "User-Agent": UserAgent().random,
+        "User-Agent": ua.random,
         "Accept-Language": "en-US,en;q=0.9"
     }
 
@@ -85,9 +86,3 @@ def scrape_jumia(product_name, max_results=10):
             continue
 
     return pd.DataFrame(results)
-
-
-# Example usage
-if __name__ == "__main__":
-    df = scrape_jumia("LG TV 65", max_results=10)
-    print(df)
