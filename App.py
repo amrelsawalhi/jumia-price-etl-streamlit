@@ -1,11 +1,11 @@
 import streamlit as st
 import pandas as pd
-from scraper import scrape_jumia  # your existing scraping function
+from Scraper import scrape_jumia  # your existing scraping function
 
 st.title("Jumia Egypt Product Scraper")
 
 st.write("Enter product names, one per line:")
-input_text = st.text_area("Product List", value="headphones\npower bank\nsmart watch")
+input_text = st.text_area("Product List", placeholder="headphones\npower bank\nsmart watch")
 
 max_results = st.slider("Max results per product", 3, 20, 5)
 
@@ -16,12 +16,15 @@ if st.button("Scrape All"):
     with st.spinner(f"Scraping {len(product_list)} product queries..."):
         for product in product_list:
             st.write(f"🔍 Scraping: `{product}`")
-            df = scrape_jumia(product, max_results=max_results)
-            if not df.empty:
-                df["searched_product"] = product
-                all_data.append(df)
-            else:
-                st.warning(f"No results for: {product}")
+            try:
+                df = scrape_jumia(product, max_results=max_results)
+                if not df.empty:
+                    df["searched_product"] = product
+                    all_data.append(df)
+                else:
+                    st.warning(f"No results for: {product}")
+            except Exception as e:
+                st.error(f"❌ Error scraping '{product}': {e}")
 
     if all_data:
         final_df = pd.concat(all_data, ignore_index=True)
